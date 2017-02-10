@@ -15,7 +15,7 @@
         "types": ["jasmine", "lodash"]
     },
     "include": [
-        "Pretender.ts",
+        "Deceiver.ts",
         "spec/**/*"
     ]
 }

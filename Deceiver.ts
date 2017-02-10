@@ -5,11 +5,11 @@ export interface Constructor<T> {
     new (...args: any[]): T; // tslint:disable-line:no-any
 }
 
-export interface RealPretenderFactory {
-    <T>(mirror: PretenderMirror<T>): T;
+export interface RealDeceiverFactory {
+    <T>(mirror: DeceiverMirror<T>): T;
 }
 
-export class PretenderMirror<T> {
+export class DeceiverMirror<T> {
     constructor (private klass: Constructor<T>) {
     }
 
@@ -49,10 +49,10 @@ export class PretenderMirror<T> {
     }
 }
 
-export class PretenderFactory {
-    constructor (private realPretenderFactory: RealPretenderFactory) {}
+export class DeceiverFactory {
+    constructor (private realDeceiverFactory: RealDeceiverFactory) {}
 
-    public getPretender<T>(klass: Constructor<T>): T {
-        return this.realPretenderFactory<T>(new PretenderMirror(klass));
+    public getDeceiver<T>(klass: Constructor<T>): T {
+        return this.realDeceiverFactory<T>(new DeceiverMirror(klass));
     }
 }

@@ -1,10 +1,10 @@
 {
-  "name": "pretender-core",
-  "version": "1.0.0-beta.3",
-  "description": "Core of Pretender library",
-  "main": "Pretender.js",
-  "types": "Pretender.d.ts",
-  "typings": "Pretender.d.ts",
+  "name": "deceiver-core",
+  "version": "1.0.0-beta.0",
+  "description": "Core of Deceiver library",
+  "main": "Deceiver.js",
+  "types": "Deceiver.d.ts",
+  "typings": "Deceiver.d.ts",
   "devDependencies": {
     "@types/jasmine": "^2.5.41",
     "jasmine": "^2.5.2",
@@ -17,7 +17,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.release.json",
     "watch": "tsc -w",
-    "lint": "tslint ./Pretender.ts ./spec/Pretender.ts",
+    "lint": "tslint ./Deceiver.ts ./spec/Deceiver.ts",
     "lint:watch": "nodemon --exec 'npm run lint'",
     "test": "jasmine",
     "test:all": "npm run test && npm run lint",
@@ -26,7 +26,7 @@
   "author": "Andrzej Kopeć <andrzej.kopec@outlook.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:kapke/pretender-core.git"
+    "url": "git@github.com:kapke/Deceiver-core.git"
   },
   "dependencies": {
     "@types/lodash": "^4.14.52",
