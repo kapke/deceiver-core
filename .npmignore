@@ -1,0 +1,6 @@
+nodemon.json
+.gitignore
+spec/support
+spec/**/*.js
+spec/**/*.d.ts
+tslint.json
