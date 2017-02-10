@@ -1,35 +1,35 @@
 {
-    "name": "pretender-core",
-    "version": "1.0.0-beta.2",
-    "description": "Core of Pretender library",
-    "main": "Pretender.js",
-    "types": "Pretender.d.ts",
-    "typings": "Pretender.d.ts",
-    "devDependencies": {
-        "@types/jasmine": "^2.5.41",
-        "jasmine": "^2.5.2",
-        "nodemon": "^1.11.0",
-        "ts-node": "^2.0.0",
-        "tslint": "^4.3.1",
-        "tslint-microsoft-contrib": "~4.0.0",
-        "typescript": "2.1.6"
-    },
-    "scripts": {
-        "build": "tsc -p tsconfig.release.json",
-        "watch": "tsc -w",
-        "lint": "tslint ./Pretender.ts ./spec/Pretender.ts",
-        "lint:watch": "nodemon --exec 'npm run lint'",
-        "test": "jasmine",
-        "test:all": "npm run test && npm run lint",
-        "test:watch": "nodemon --exec 'npm run test:all'"
-    },
-    "author": "Andrzej Kopeć <andrzej.kopec@outlook.com>",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:kapke/pretender-core.git"
-    },
-    "dependencies": {
-        "@types/lodash": "^4.14.52",
-        "lodash": "^4.17.4"
-    }
+  "name": "pretender-core",
+  "version": "1.0.0-beta.3",
+  "description": "Core of Pretender library",
+  "main": "Pretender.js",
+  "types": "Pretender.d.ts",
+  "typings": "Pretender.d.ts",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.41",
+    "jasmine": "^2.5.2",
+    "nodemon": "^1.11.0",
+    "ts-node": "^2.0.0",
+    "tslint": "^4.3.1",
+    "tslint-microsoft-contrib": "~4.0.0",
+    "typescript": "2.1.6"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.release.json",
+    "watch": "tsc -w",
+    "lint": "tslint ./Pretender.ts ./spec/Pretender.ts",
+    "lint:watch": "nodemon --exec 'npm run lint'",
+    "test": "jasmine",
+    "test:all": "npm run test && npm run lint",
+    "test:watch": "nodemon --exec 'npm run test:all'"
+  },
+  "author": "Andrzej Kopeć <andrzej.kopec@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kapke/pretender-core.git"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.52",
+    "lodash": "^4.17.4"
+  }
 }
