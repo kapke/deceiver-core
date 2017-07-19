@@ -6,13 +6,13 @@
   "types": "Deceiver.d.ts",
   "typings": "Deceiver.d.ts",
   "devDependencies": {
-    "@types/jasmine": "^2.5.41",
-    "jasmine": "^2.5.2",
+    "@types/jasmine": "^2.5.53",
+    "jasmine": "^2.6.0",
     "nodemon": "^1.11.0",
-    "ts-node": "^2.0.0",
-    "tslint": "^4.3.1",
-    "tslint-microsoft-contrib": "~4.0.0",
-    "typescript": "2.1.6"
+    "ts-node": "^3.2.0",
+    "tslint": "^5.5.0",
+    "tslint-microsoft-contrib": "^5.0.1",
+    "typescript": "^2.4.1"
   },
   "scripts": {
     "build": "tsc -p tsconfig.release.json",
@@ -29,7 +29,7 @@
     "url": "git@github.com:kapke/Deceiver-core.git"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.52",
+    "@types/lodash": "^4.14.70",
     "lodash": "^4.17.4"
   }
 }

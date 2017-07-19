@@ -1,5 +1,6 @@
 {
     "rules": {
+        "function-name": [true, {"function-regex": "^[a-zA-Z][\\w\\d]+$"}],
         "no-banned-terms": true,
         "no-delete-expression": true,
         "no-disable-auto-sanitization": true,
@@ -36,8 +37,6 @@
         "no-unnecessary-override": true,
         "no-unsafe-finally": true,
         "no-unused-expression": true,
-        "no-unused-new": true,
-        "no-use-before-declare": true,
         "no-with-statement": true,
         "promise-must-complete": true,
         "radix": true,
@@ -50,7 +49,6 @@
         "class-name": true,
         "comment-format": [true, "check-space", "check-uppercase"],
         "export-name": false,
-        "function-name": true,
         "import-name": false,
         "interface-name": [true, "never-prefix"],
         "jsdoc-format": true,
