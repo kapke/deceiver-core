@@ -23,17 +23,26 @@ export class DeceiverMirror<T, K extends keyof T> {
 
     public getMethodNames (): K[] {
         return _(this.getAllPrototypes())
-            .flatMap(Object.getOwnPropertyNames)
-            .filter(name => typeof this.klass.prototype[name] == 'function')
+            .map(prototype => ({prototype, names: Object.getOwnPropertyNames(prototype)}))
+            .map(({prototype, names}) => ({
+                prototype,
+                names: names.filter(name => typeof Object.getOwnPropertyDescriptor(prototype, name).value == 'function'),
+            }))
+            .flatMap(({names}) => names)
             .filter(name => name != 'constructor')
-            .reduce(
-                (output: K[], item: K) => {
-                    return output.some((comparedItem) => item == comparedItem)
-                        ? output
-                        : output.concat([item]);
-                },
-                [],
-            );
+            .reduce(this.toUniqueArray, []);
+    }
+
+    public getPropertyNames (): K[] {
+        return _(this.getAllPrototypes())
+            .map(prototype => ({prototype, names: Object.getOwnPropertyNames(prototype)}))
+            .map(({prototype, names}) => ({
+                prototype,
+                names: names.filter(name => Object.getOwnPropertyDescriptor(prototype, name).get),
+            }))
+            .flatMap(({names}) => names)
+            .filter(name => name !== '__proto__')
+            .reduce(this.toUniqueArray, []);
     }
 
     public getMethod (name: K): T[K] {
@@ -50,6 +59,12 @@ export class DeceiverMirror<T, K extends keyof T> {
 
     private getParentPrototype (prototype: any): Object { // tslint:disable-line:no-any
         return prototype.__proto__;
+    }
+
+    private toUniqueArray (output: K[], item: K): K[] {
+        return output.some((comparedItem) => item == comparedItem)
+            ? output
+            : output.concat([item]);
     }
 }
 
@@ -75,7 +90,7 @@ export function Deceiver<T, K extends keyof T> (klass: Constructor<T>, mixin?: P
 
     const mirror = new DeceiverMirror(klass);
 
-    const result = mirror.getMethodNames()
+    const methodsPart = mirror.getMethodNames()
         .map((name: K) => ([name, mirror.getMethod(name)]))
         .reduce(
             (acc: T, [name, method]: [K, T[K]]) => {
@@ -86,5 +101,8 @@ export function Deceiver<T, K extends keyof T> (klass: Constructor<T>, mixin?: P
             {} as T,
         );
 
-    return Object.assign(result, mixin);
+    const propertiesPart = mirror.getPropertyNames()
+        .reduce((result, name) => ({...result, [name]: undefined}), {});
+
+    return Object.assign(methodsPart, propertiesPart, mixin);
 }

@@ -28,6 +28,33 @@ describe('DeceiverMirror', () => {
         expect(mirror.getClass()).toBe(TestClass);
     });
 
+    describe('producing list of properties', () => {
+        it('should return list of attached getters', () => {
+            class TestClass {
+                get foo () {return 'foo'; }
+                get bar () {return 'bar'; }
+            }
+
+            const mirror = new DeceiverMirror(TestClass);
+
+            expect(mirror.getPropertyNames()).toEqual(['foo', 'bar']);
+        });
+
+        it('should return list of parent classes getters', () => {
+            class Parent {
+                get foo () {return 'foo'; }
+                get bar () {return 'bar'; }
+            }
+            class TestClass extends Parent {}
+
+            const mirror = new DeceiverMirror(TestClass);
+
+            expect(mirror.getPropertyNames()).toEqual(['foo', 'bar']);
+        });
+    });
+
+
+
     describe('producing list of class methods', () => {
         const objectPrototypeMethods = ['hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'toLocaleString', 'toString', 'valueOf'];
         Object.freeze(objectPrototypeMethods);
@@ -39,7 +66,6 @@ describe('DeceiverMirror', () => {
             }
 
             const mirror = new DeceiverMirror(TestClass);
-
 
             expectContainingAll(mirror.getMethodNames(), ['method1', 'method2']);
         });
@@ -96,6 +122,19 @@ describe('DeceiverMirror', () => {
             const mirror = new DeceiverMirror(TestClass);
 
             expect(mirror.getMethod('bar')).toBe(TestClass.prototype.bar);
+        });
+
+        it('should filter out getters and setters without accessing them', () => {
+            class TestClass {
+                public get foo () {throw new Error('Foo'); }
+                public set bar (value: string) {throw new Error('bar' + value); }
+                public method1 () {}
+                public method2 () {}
+            }
+
+            const mirror = new DeceiverMirror(TestClass);
+
+            expectContainingAll(mirror.getMethodNames(), ['method1', 'method2']);
         });
     });
 });
@@ -199,5 +238,15 @@ describe('Deceiver', () => {
 
         expect(aDeceiver.foo).toBe('foo');
         expect(aDeceiver.abc()).toBe('abc');
+    });
+
+    it('should add found properties to result object', () => {
+        class A {
+            public get foo () {return 'foo'; }
+        }
+
+        const aDeceiver = Deceiver(A);
+
+        expect(Object.prototype.hasOwnProperty.call(aDeceiver, 'foo')).toBe(true);
     });
 });
