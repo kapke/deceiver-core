@@ -1,11 +1,11 @@
 {
-    "spec_dir": "spec",
+    "spec_dir": "src/spec",
     "spec_files": [
-        "*Spec.ts",
-        "**/*Spec.ts"
+        "*spec.ts",
+        "**/*spec.ts"
     ],
     "helpers": [
-        "../node_modules/ts-node/register.js",
+        "../../node_modules/ts-node/register.js",
         "helpers/**/*.js"
     ],
     "stopSpecOnExpectationFailure": false,

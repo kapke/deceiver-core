@@ -85,7 +85,7 @@
         "prefer-const": false,
         "typedef": false,
         "underscore-consistent-invocation": true,
-        "variable-name": true,
+        "variable-name": [true, "allow-leading-underscore"],
         "align": [true, "parameters", "arguments", "statements"],
         "curly": true,
         "eofline": true,
