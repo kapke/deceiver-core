@@ -13,7 +13,7 @@
         "strictNullChecks": true,
         "strict": true,
         "lib": ["es5", "es2015", "es2016", "es2017"],
-        "types": ["jasmine", "lodash"]
+        "types": ["jest", "lodash"]
     },
     "include": [
         "Deceiver.ts",
