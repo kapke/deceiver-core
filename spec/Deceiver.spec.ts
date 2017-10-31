@@ -10,7 +10,7 @@ import {
 function expectContainingAll<T>(actual: T[], expected: T[]): void {
     const result = expected.every(item => actual.includes(item))
 
-    expect(result).toBe(true, `Expected [${actual}] to contain every element of [${expected}]`)
+    expect(result).toBe(true)
 }
 
 describe('DeceiverMirror', () => {

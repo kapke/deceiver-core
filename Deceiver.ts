@@ -1,5 +1,4 @@
 import * as _ from 'lodash'
-
 export interface Constructor<T> {
     new (...args: any[]): T // tslint:disable-line:no-any
 }
@@ -20,7 +19,7 @@ export class DeceiverMirror<T, K extends keyof T> {
     }
 
     public getMethodNames(): K[] {
-        return _(this.getAllPrototypes())
+        return _.chain(this.getAllPrototypes())
             .map(prototype => ({ prototype, names: Object.getOwnPropertyNames(prototype) }))
             .map(({ prototype, names }) => ({
                 prototype,
@@ -32,18 +31,20 @@ export class DeceiverMirror<T, K extends keyof T> {
             .flatMap(({ names }) => names)
             .filter(name => name != 'constructor')
             .reduce(this.toUniqueArray, [])
+            .value()
     }
 
     public getPropertyNames(): K[] {
-        return _(this.getAllPrototypes())
+        return _.chain(this.getAllPrototypes())
             .map(prototype => ({ prototype, names: Object.getOwnPropertyNames(prototype) }))
             .map(({ prototype, names }) => ({
                 prototype,
                 names: names.filter(name => Object.getOwnPropertyDescriptor(prototype, name).get),
             }))
             .flatMap(({ names }) => names)
-            .filter(name => name != '__proto__')
+            .filter(name => name !== '__proto__')
             .reduce(this.toUniqueArray, [])
+            .value()
     }
 
     public getMethod(name: K): T[K] {
