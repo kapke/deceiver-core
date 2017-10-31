@@ -1,6 +1,4 @@
 nodemon.json
 .gitignore
-spec/support
-spec/**/*.js
-spec/**/*.d.ts
+spec/
 tslint.json
