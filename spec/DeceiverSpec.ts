@@ -206,13 +206,15 @@ describe('DeceiverFactory', () => {
 
         let calls: number = 0
         let passedKlass: {}
-        let passedMirror: DeceiverMirror<TestClass, keyof TestClass>|null = null
+        let passedMirror: DeceiverMirror<TestClass, keyof TestClass> | null = null
 
-        function spiedFactory<T>(receivedMirror: DeceiverMirror<TestClass, keyof TestClass>): T|null {
-            const a: {}|null = null
+        function spiedFactory<T>(
+            receivedMirror: DeceiverMirror<TestClass, keyof TestClass>,
+        ): T | null {
+            const a: {} | null = null
             calls += 1
             passedMirror = receivedMirror
-            return a as T|null
+            return a as T | null
         }
         const deceiverFactory = new DeceiverFactory(spiedFactory as RealDeceiverFactory)
 

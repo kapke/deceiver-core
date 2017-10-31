@@ -59,7 +59,7 @@ export class DeceiverMirror<T, K extends keyof T> {
     }
 
     private getParentPrototype(prototype: {}): Object {
-        return prototype['__proto__']
+        return prototype['__proto__'] // tslint:disable-line:no-string-literal
     }
 
     private toUniqueArray(output: K[], item: K): K[] {

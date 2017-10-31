@@ -5,6 +5,7 @@
   "main": "Deceiver.js",
   "types": "Deceiver.d.ts",
   "typings": "Deceiver.d.ts",
+  "license": "MIT",
   "devDependencies": {
     "@types/jasmine": "^2.5.53",
     "jasmine": "^2.6.0",
