@@ -9,9 +9,10 @@
   "devDependencies": {
     "@types/jest": "^21.1.5",
     "jest": "^21.2.1",
+    "jest-junit": "^3.1.0",
     "nodemon": "^1.11.0",
-    "ts-jest": "^21.1.4",
     "prettier": "^1.7.4",
+    "ts-jest": "^21.1.4",
     "ts-node": "^3.2.0",
     "tslint": "^5.5.0",
     "tslint-config-prettier": "^1.6.0",
@@ -25,6 +26,7 @@
     "lint": "tslint ./Deceiver.ts ./spec/DeceiverSpec.ts",
     "lint:watch": "nodemon --exec 'npm run lint'",
     "test": "jest",
+    "test:ci": "JEST_JUNIT_OUTPUT='test_results/unit.xml' jest --ci --testResultsProcessor=jest-junit",
     "test:all": "npm run test && npm run lint",
     "test:watch": "nodemon --exec 'npm run test:all'"
   },

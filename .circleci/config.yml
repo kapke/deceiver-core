@@ -17,5 +17,7 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           command: |
-            yarn test
+            yarn test:ci
             yarn lint
+      - store_test_results:
+          path: test_results
