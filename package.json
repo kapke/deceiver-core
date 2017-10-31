@@ -2,9 +2,9 @@
   "name": "deceiver-core",
   "version": "1.0.0-beta.6",
   "description": "Core of Deceiver library",
-  "main": "src/Deceiver.js",
-  "types": "src/Deceiver.d.ts",
-  "typings": "src/Deceiver.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "typings": "index.d.ts",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^21.1.5",
