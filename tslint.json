@@ -92,12 +92,7 @@
       140
     ],
     "member-access": true,
-    "member-ordering": [
-      true,
-      {
-        "order": "fields-first"
-      }
-    ],
+    "member-ordering": false,
     "missing-jsdoc": false,
     "new-parens": true,
     "no-construct": true,
@@ -127,12 +122,7 @@
     "typedef": false,
     "underscore-consistent-invocation": true,
     "variable-name": [true, "allow-leading-underscore"],
-    "align": [
-      true,
-      "parameters",
-      "arguments",
-      "statements"
-    ],
+    "align": false,
     "curly": true,
     "eofline": true,
     "indent": [
@@ -171,24 +161,8 @@
         "multiline": "always"
       }
     ],
-    "typedef-whitespace": [
-      true,
-      {
-        "call-signature": "nospace",
-        "index-signature": "nospace",
-        "parameter": "nospace",
-        "property-declaration": "nospace",
-        "variable-declaration": "nospace"
-      }
-    ],
-    "whitespace": [
-      true,
-      "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-separator",
-      "check-type"
-    ],
+    "typedef-whitespace": false,
+    "whitespace": false,
     "ban": false,
     "no-angle-bracket-type-assertion": true,
     "no-internal-module": false,

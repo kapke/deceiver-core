@@ -16,7 +16,8 @@
         "types": ["jest", "lodash"]
     },
     "include": [
-        "Deceiver.ts",
+        "src/*",
+        "src/**/*",
         "spec/**/*"
     ]
 }
