@@ -42,7 +42,7 @@ export class DeceiverMirror<T, K extends keyof T> {
                 names: names.filter(name => Object.getOwnPropertyDescriptor(prototype, name).get),
             }))
             .flatMap(({ names }) => names)
-            .filter(name => name !== '__proto__')
+            .filter(name => name != '__proto__')
             .reduce(this.toUniqueArray, [])
     }
 
@@ -59,8 +59,7 @@ export class DeceiverMirror<T, K extends keyof T> {
     }
 
     private getParentPrototype(prototype: {}): Object {
-        // tslint:disable-line:no-any
-        return prototype.__proto__
+        return prototype['__proto__']
     }
 
     private toUniqueArray(output: K[], item: K): K[] {
