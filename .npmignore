@@ -1,4 +1,13 @@
+.idea/
+spec
+.circleci/
 nodemon.json
+test_results/
 .gitignore
-spec/
+.editorconfig
+.prettierrc
+tsconfig.json
+tsconfig.release.json
 tslint.json
+*.ts
+!*.d.ts
