@@ -1,38 +1,42 @@
-import { DeceiverMirror } from './DeceiverMirror';
-import { deceiverMirrorFactory, DeceiverMirrorFactory } from './DeceiverMirrorFactory';
-import { Constructor } from './types';
+import { DeceiverMirror } from './DeceiverMirror'
+import { deceiverMirrorFactory, DeceiverMirrorFactory } from './DeceiverMirrorFactory'
+import { Constructor } from './types'
 
 export class DeceiverFactory {
-    constructor (private mirrorFactory: DeceiverMirrorFactory) {}
+    constructor(private mirrorFactory: DeceiverMirrorFactory) {}
 
     public getDeceiver<T, K extends keyof T>(klass: Constructor<T>, mixin: Partial<T> = {}): T {
         // A little hack to make types happy
         // tslint:disable-next-line:no-any
-        function getFakeFunc (method: T[K]): any {
+        function getFakeFunc(method: T[K]): any {
             if (method instanceof Function) {
-                const args = Array(method.length).fill(0).map(i => `arg${i}`);
-                return new Function(...args, 'return void 0;'); // tslint:disable-line:no-function-constructor-with-string-args
+                const args = Array(method.length)
+                    .fill(0)
+                    .map(i => `arg${i}`)
+                return new Function(...args, 'return void 0;') // tslint:disable-line:no-function-constructor-with-string-args
             } else {
-                return method;
+                return method
             }
         }
 
-        const mirror = this.mirrorFactory(klass);
+        const mirror = this.mirrorFactory(klass)
 
-        const methodsPart = mirror.getMethodNames()
-            .map((name: K) => ([name, mirror.getMethod(name)]))
+        const methodsPart = mirror
+            .getMethodNames()
+            .map((name: K) => [name, mirror.getMethod(name)])
             .reduce(
                 (acc: T, [name, method]: [K, T[K]]) => {
-                    acc[name] = getFakeFunc(method);
+                    acc[name] = getFakeFunc(method)
 
-                    return acc;
+                    return acc
                 },
                 {} as T,
-            );
+            )
 
-        const propertiesPart = mirror.getPropertyNames()
-            .reduce((result, name) => ({...result, [name]: undefined}), {});
+        const propertiesPart = mirror
+            .getPropertyNames()
+            .reduce((result, name) => ({ ...result, [name]: undefined }), {})
 
-        return Object.assign(methodsPart, propertiesPart, mixin);
+        return Object.assign(methodsPart, propertiesPart, mixin)
     }
 }

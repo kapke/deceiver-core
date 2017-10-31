@@ -1,6 +1,7 @@
 .DS_Store
 .idea
-node_modules
+node_modules/
+test_results/
 *.js
 *.d.ts
 npm-debug.log
