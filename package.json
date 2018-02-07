@@ -36,7 +36,7 @@
     "url": "git@github.com:kapke/Deceiver-core.git"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.70",
+    "@types/lodash": "*",
     "lodash": "^4.17.4"
   },
   "jest": {
