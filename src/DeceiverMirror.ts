@@ -21,15 +21,16 @@ export class DeceiverMirror<T, K extends keyof T> {
         return this.klass.prototype[name]
     }
 
-    public getMethodNames = _.memoize((): K[] =>
-        this.getAllMembers(
-            descriptor => typeof descriptor.value == 'function',
-            name => name != 'constructor',
-        ),
+    public getMethodNames = _.memoize(
+        (): K[] =>
+            this.getAllMembers(
+                descriptor => typeof descriptor.value == 'function',
+                name => name != 'constructor',
+            ),
     )
 
-    public getPropertyNames = _.memoize((): K[] =>
-        this.getAllMembers(descriptor => !!descriptor.get, name => name != '__proto__'),
+    public getPropertyNames = _.memoize(
+        (): K[] => this.getAllMembers(descriptor => !!descriptor.get, name => name != '__proto__'),
     )
 
     private getAllMembers(
@@ -41,10 +42,10 @@ export class DeceiverMirror<T, K extends keyof T> {
             .map(({ prototype, names }) => ({
                 prototype,
                 names: names.filter(name =>
-                    descriptorFilterer(Object.getOwnPropertyDescriptor(prototype, name)),
+                    descriptorFilterer(Object.getOwnPropertyDescriptor(prototype, name)!),
                 ),
             }))
-            .flatMap(({ names }) => names)
+            .flatMap(({ names }) => names as K[])
             .filter(nameFilterer)
             .reduce(this.toUniqueArray, [])
             .value()

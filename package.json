@@ -7,18 +7,18 @@
   "typings": "index.d.ts",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^21.1.5",
-    "jest": "^21.2.1",
-    "jest-junit": "^3.1.0",
-    "nodemon": "^1.11.0",
-    "prettier": "^1.7.4",
-    "ts-jest": "^21.1.4",
-    "ts-node": "^3.2.0",
-    "tslint": "^5.5.0",
-    "tslint-config-prettier": "^1.6.0",
-    "tslint-microsoft-contrib": "^5.0.1",
+    "@types/jest": "^23.1.0",
+    "jest": "^23.1.0",
+    "jest-junit": "^5.0.0",
+    "nodemon": "^1.17.5",
+    "prettier": "^1.13.5",
+    "ts-jest": "^22.4.6",
+    "ts-node": "^6.1.1",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "tslint-microsoft-contrib": "^5.0.3",
     "tslint-plugin-prettier": "^1.3.0",
-    "typescript": "^2.4.1"
+    "typescript": "^2.9.2"
   },
   "scripts": {
     "build": "tsc -p tsconfig.release.json",
@@ -36,8 +36,8 @@
     "url": "git@github.com:kapke/Deceiver-core.git"
   },
   "dependencies": {
-    "@types/lodash": "*",
-    "lodash": "^4.17.4"
+    "@types/lodash": "^4.14.109",
+    "lodash": "^4.17.10"
   },
   "jest": {
     "transform": {

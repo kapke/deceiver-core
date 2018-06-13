@@ -1,4 +1,4 @@
-// tslint:disable:no-empty no-stateless-class
+// tslint:disable:no-empty no-unnecessary-class
 import { DeceiverMirror } from '../DeceiverMirror'
 
 function expectContainingAll<T>(actual: T[], expected: T[]): void {

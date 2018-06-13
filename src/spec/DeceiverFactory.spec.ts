@@ -1,4 +1,4 @@
-// tslint:disable:no-empty no-stateless-class
+// tslint:disable:no-empty no-unnecessary-class
 import { DeceiverFactory } from '../DeceiverFactory'
 import { DeceiverMirror } from '../DeceiverMirror'
 import { deceiverMirrorFactory, DeceiverMirrorFactory } from '../DeceiverMirrorFactory'
@@ -101,10 +101,10 @@ describe('DeceiverFactory', () => {
 
     it('should allow to pass arbitrary object with data which gets mixed into result', () => {
         class A {
-            public foo: string
-            public bar: number
-            public baz: boolean
-            public biz: {}
+            public foo!: string
+            public bar!: number
+            public baz!: boolean
+            public biz!: {}
 
             public abc(): string {
                 return ''

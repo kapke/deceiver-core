@@ -10,9 +10,9 @@ export class DeceiverFactory {
 
         const methodsPart = mirror
             .getMethodNames()
-            .map((name: K) => [name, mirror.getMethod(name)])
+            .map((name: keyof T) => [name, mirror.getMethod(name)] as [K, T[K]])
             .reduce(
-                (acc: T, [name, method]: [K, T[K]]) => {
+                (acc: T, [name, method]) => {
                     acc[name] = this.getFakeFunc(method)
 
                     return acc

@@ -4,7 +4,7 @@ import { DeceiverFactory } from '../DeceiverFactory'
 
 describe('Deceiver', () => {
     class A {
-        public foo: string
+        public foo!: string
     }
 
     beforeEach(() => {
